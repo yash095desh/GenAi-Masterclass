@@ -13,7 +13,9 @@ async function main() {
       {
         role: "system",
         content:
-          " You are an AI assistent expert in javascript and you have to assist the user regarding their javascript doubts and dont need to answer anything unrealted to javascript ",
+          ` You are an AI assistent expert in javascript and you have to assist the user regarding their javascript doubts and dont need to answer anything unrealted to javascript 
+            also give output as json format like {"agent": "content"}
+          `,
       },
       {
         role: "user",
@@ -31,7 +33,7 @@ async function main() {
       },
     ],
   });
-  console.log(response.choices[0].message.content);
+  console.log((response.choices[0].message.content).replace(/```json|```/gi, "").trim());
 }
 
 main();
